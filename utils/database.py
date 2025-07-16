@@ -96,7 +96,7 @@ class Database(ABC):
           conn.rollback()
         except pyodbc.Error as rb_e:
           logger.error(f'Error while trying rollback: {str(rb_e)}')
-      raise Exception('Error while executing query')
+      raise Exception(f'Error while executing query {str(e)}')
     
     except Exception as e:
       logger.error(f'Error: {str(e)}')
