@@ -1,6 +1,5 @@
 from fastapi import HTTPException
 from dotenv import load_dotenv
-import json
 import logging
 import os
 import requests
@@ -11,7 +10,7 @@ from firebase_admin import credentials, auth
 from models.userregistry import UserRegister
 from models.loginuser import UserLogin
 from utils.database import Database
-from utils.jwt import JWT
+from utils.auth_token import JWT
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO)
@@ -26,18 +25,18 @@ class Firebase(ABC):
 
   @staticmethod
   async def signup(user: UserRegister) -> dict:
-    user_record
+    user_record = {}
     try:
       user_record = auth.create_user(email=user.email, password=user.password) 
     except Exception as e:
       logger.error(f'could not create user in firebase {e}')
       raise HTTPException(status_code=400, detail=f"error while creating user {e}")
     
-    query = "INSERT INTO redis.Users ?, ?, ?, ?, ?"
+    query = "INSERT INTO redis.Users (email, first_name, last_name, active, admin) VALUES (?, ?, ?, ?, ?)"
     params = [user_record.email, user.first_name, user.last_name, user.active, user.admin]
 
     try:
-      res = Database.execute_query_json(query, params, needs_commit=True)
+      res = await Database.execute_query_json(query, params, needs_commit=True)
       return res
     except Exception as e:
       logger.error(f'error while inserting user to database... {e}')
@@ -61,15 +60,17 @@ class Firebase(ABC):
               detail=f"Error al autenticar usuario: {response_data['error']['message']}"
           )
 
-      query = f"select email,firstname,lastname,active,admin from redis.Users where email = ?"
+      query = f"select email,first_name,last_name,active,admin from redis.Users where email = ?"
       params = [user.email]
 
       try:
           result = await Database.execute_query_json(query, params, needs_commit=False)
-          result_dict = json.loads(result)
+          logger.info(f'USER: {result[0]}')
+          token = JWT.create_jwt_token(result[0])
+          logger.info(f'TOKEN: {token}')
           return {
               "message": "Usuario autenticado exitosamente",
-              "idToken": JWT.create_jwt_token(result_dict[0])
+              "idToken": token 
           }
       except Exception as e:
           raise HTTPException(status_code=500, detail=str(e))

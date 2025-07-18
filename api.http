@@ -1,0 +1,24 @@
+@DOMAIN = http://localhost:8080
+
+###
+POST {{DOMAIN}}/signup
+
+{
+  "first_name": "Carlos",
+  "email": "Flores6@gmail.com",
+  "last_name": "Flores",
+  "password": "ThisIs@1234",
+  "active": 1,
+  "admin": 0
+}
+
+###
+POST {{DOMAIN}}/login
+
+{
+  "email": "Flores5@gmail.com",
+  "password": "ThisIs@1234"
+}
+
+### get all users in database
+GET {{DOMAIN}}/users
