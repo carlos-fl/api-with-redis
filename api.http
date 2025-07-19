@@ -1,4 +1,4 @@
-@DOMAIN = http://localhost:8080
+@DOMAIN = https://redis-api-dev-api.azurewebsites.net/
 
 ###
 POST {{DOMAIN}}/signup
