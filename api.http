@@ -16,9 +16,38 @@ POST {{DOMAIN}}/signup
 POST {{DOMAIN}}/login
 
 {
-  "email": "Flores5@gmail.com",
+  "email": "Flores6@gmail.com",
   "password": "ThisIs@1234"
 }
 
 ### get all users in database
 GET {{DOMAIN}}/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJDYXJsb3MiLCJsYXN0bmFtZSI6IkZsb3JlcyIsImVtYWlsIjoiZmxvcmVzNkBnbWFpbC5jb20iLCJhY3RpdmUiOnRydWUsImFkbWluIjpmYWxzZSwiZXhwIjoxNzUyODk1MDE5LCJpYXQiOjE3NTI4OTE0MTl9.0NvL0Z3AUalGjAAWDSs0zjcHXnbCci7tMD4Qk5NIHOE
+ 
+
+### all filters
+GET {{DOMAIN}}/products?color=Black&brand=Fastrack
+
+### brand
+GET {{DOMAIN}}/products?brand=Fastrack
+
+### color
+GET {{DOMAIN}}/products?color=Black
+
+### no filters
+GET {{DOMAIN}}/products
+
+### create new product
+POST {{DOMAIN}}/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJDYXJsb3MiLCJsYXN0bmFtZSI6IkZsb3JlcyIsImVtYWlsIjoiZmxvcmVzNkBnbWFpbC5jb20iLCJhY3RpdmUiOnRydWUsImFkbWluIjpmYWxzZSwiZXhwIjoxNzUyODk1MDE5LCJpYXQiOjE3NTI4OTE0MTl9.0NvL0Z3AUalGjAAWDSs0zjcHXnbCci7tMD4Qk5NIHOE
+
+{
+  "ProductID": 1020116, 
+  "ProductName": "This is a product name", 
+  "ProductBrand": "Fastrack", 
+  "Gender": "Women", 
+  "Price": 195, 
+  "NumImages": 3, 
+  "Description": "This is a simple description", 
+  "PrimaryColor": "Gray"
+}
