@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "41c3bb02-94f0-4a61-ae62-81f239b1020f",
+		"name": "EXPERTOS_PROYECTO_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38337662"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"first_name\": \"Thomas\",\n  \"email\": \"Thomas@gmail.com\",\n  \"last_name\": \"Flores\",\n  \"password\": \"ThisIs@1234\",\n  \"active\": 1,\n  \"admin\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{domain}}/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"Thomas@gmail.com\",\n  \"password\": \"ThisIs@1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{domain}}/login"
+			},
+			"response": []
+		},
+		{
+			"name": "get users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJUaG9tYXMiLCJsYXN0bmFtZSI6IkZsb3JlcyIsImVtYWlsIjoidGhvbWFzQGdtYWlsLmNvbSIsImFjdGl2ZSI6dHJ1ZSwiYWRtaW4iOnRydWUsImV4cCI6MTc1MzQyNzE4MSwiaWF0IjoxNzUzNDIzNTgxfQ.pcS1imWSimkD9Y3z9rsbn_sRPMQv39P1uxanf4-oW7Y",
+						"description": "Token necesario para validar autenticación y autorización",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"Thomas@gmail.com\",\n  \"password\": \"ThisIs@1234\"\n}"
+				},
+				"url": "{{domain}}/users"
+			},
+			"response": []
+		},
+		{
+			"name": "get all products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJUaG9tYXMiLCJsYXN0bmFtZSI6IkZsb3JlcyIsImVtYWlsIjoidGhvbWFzQGdtYWlsLmNvbSIsImFjdGl2ZSI6dHJ1ZSwiYWRtaW4iOnRydWUsImV4cCI6MTc1MzQyNzE4MSwiaWF0IjoxNzUzNDIzNTgxfQ.pcS1imWSimkD9Y3z9rsbn_sRPMQv39P1uxanf4-oW7Y",
+						"description": "Token necesario para validar autenticación y autorización",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"Thomas@gmail.com\",\n  \"password\": \"ThisIs@1234\"\n}"
+				},
+				"url": "{{domain}}/products"
+			},
+			"response": []
+		},
+		{
+			"name": "get products with brand filter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJUaG9tYXMiLCJsYXN0bmFtZSI6IkZsb3JlcyIsImVtYWlsIjoidGhvbWFzQGdtYWlsLmNvbSIsImFjdGl2ZSI6dHJ1ZSwiYWRtaW4iOnRydWUsImV4cCI6MTc1MzQyNzE4MSwiaWF0IjoxNzUzNDIzNTgxfQ.pcS1imWSimkD9Y3z9rsbn_sRPMQv39P1uxanf4-oW7Y",
+						"description": "Token necesario para validar autenticación y autorización",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"Thomas@gmail.com\",\n  \"password\": \"ThisIs@1234\"\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/products?brand=Fastrack",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "brand",
+							"value": "Fastrack"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all products with color filter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJUaG9tYXMiLCJsYXN0bmFtZSI6IkZsb3JlcyIsImVtYWlsIjoidGhvbWFzQGdtYWlsLmNvbSIsImFjdGl2ZSI6dHJ1ZSwiYWRtaW4iOnRydWUsImV4cCI6MTc1MzQyNzE4MSwiaWF0IjoxNzUzNDIzNTgxfQ.pcS1imWSimkD9Y3z9rsbn_sRPMQv39P1uxanf4-oW7Y",
+						"description": "Token necesario para validar autenticación y autorización",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"Thomas@gmail.com\",\n  \"password\": \"ThisIs@1234\"\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/products?color=Black",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "color",
+							"value": "Black"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all products with both filters",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJUaG9tYXMiLCJsYXN0bmFtZSI6IkZsb3JlcyIsImVtYWlsIjoidGhvbWFzQGdtYWlsLmNvbSIsImFjdGl2ZSI6dHJ1ZSwiYWRtaW4iOnRydWUsImV4cCI6MTc1MzQyNzE4MSwiaWF0IjoxNzUzNDIzNTgxfQ.pcS1imWSimkD9Y3z9rsbn_sRPMQv39P1uxanf4-oW7Y",
+						"description": "Token necesario para validar autenticación y autorización",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"Thomas@gmail.com\",\n  \"password\": \"ThisIs@1234\"\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/products?color=Black&brand=Fastrack",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "color",
+							"value": "Black"
+						},
+						{
+							"key": "brand",
+							"value": "Fastrack"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new clothe product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJUaG9tYXMiLCJsYXN0bmFtZSI6IkZsb3JlcyIsImVtYWlsIjoidGhvbWFzQGdtYWlsLmNvbSIsImFjdGl2ZSI6dHJ1ZSwiYWRtaW4iOnRydWUsImV4cCI6MTc1MzQyNzE4MSwiaWF0IjoxNzUzNDIzNTgxfQ.pcS1imWSimkD9Y3z9rsbn_sRPMQv39P1uxanf4-oW7Y",
+						"description": "Token necesario para validar autenticación y autorización",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ProductID\": 10201178, \n  \"ProductName\": \"This is a product name\", \n  \"ProductBrand\": \"Fastrack\", \n  \"Gender\": \"Women\", \n  \"Price\": 200, \n  \"NumImages\": 5, \n  \"Description\": \"This is a simple description\", \n  \"PrimaryColor\": \"Blue\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{domain}}/products"
+			},
+			"response": []
+		}
+	]
+}
